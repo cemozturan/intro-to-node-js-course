@@ -103,3 +103,31 @@ http (http requests and all)
 crypto (cryptographic stuff)
 os (attributes of the underlying OS)
 
+2) Your project files
+Each .js file is its own module
+A great way to modularize your app's code
+Each file is require()'d with file system-like semantics:
+var data = require('./data'); // require data.js in same directory
+var foo = require('./other/foo'); // require foo.js in a subdirectory
+var bar = require('../lib/bar'); // require bar.js from some other directory
+Note the "./" is always required. .js suffix is omitted.
+
+Variables are marked for export via module.exports, so they become available at other files.
+one.js:
+
+var count = 2;
+var doIt = function(i, callback){
+	// do some stuff, invoke callback...
+};
+
+module.exports.doIt = doIt;
+module.exports.foo = 'bar';
+
+two.js:
+
+var one = require('./one');
+one.doIt(23, function(err, result) {
+	console.log(result);
+});
+console.log(one.foo); // 'bar'
+// console.log(one.count) -> doesn't work as count is not exported

@@ -15,17 +15,5 @@ var evenDoubler = function(number, callback){
   }
 }
 
-var callback = (error, results, waitTime) => {
-  if (error) {
-    console.log("ERROR:" + error.message);
-  } else {
-    console.log(results + " (" + waitTime + " ms)");
-  }
-}
-
-// The order the loop is executed is different than the order the callbacks are executed,
-// because of the random wait.
-for (var i = 0; i < 10; i++) {
-  console.log("Calling for: " + i);
-  evenDoubler(i, callback);
-};
+module.exports.evenDoubler = evenDoubler;
+module.exports.foo = "bar";

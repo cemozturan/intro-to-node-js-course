@@ -80,3 +80,26 @@ someOtherFunc(function(err, stuffToGet){
 	  // do something with the results and foo
 	});
 });
+
+---- Modules, require() and NPM ----
+
+Modules bring external functionality to your app.
+
+var foo = require('foo'); // Naming convention: camelcase starting with lowercase because it exports fields and functions
+var Bar = require('bar'); // Naming convention: camelcase starting with uppercase because it needs to be instantiated with "new"
+
+var f = 2 + foo.alpha; // exports variables
+var b = foo.beta() * 3; // exports functions
+
+var bar = new Bar(); // needs to be instantiated
+
+
+There are 3 main source sof Node modules.
+
+1) Built-in modules
+Some simply work out of the box (setTimeout, setInterval, etc.) which are in Node's global namespace, some need to be require()'d.
+var fs = require('fs'); // to access the file system
+http (http requests and all)
+crypto (cryptographic stuff)
+os (attributes of the underlying OS)
+

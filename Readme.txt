@@ -131,3 +131,12 @@ one.doIt(23, function(err, result) {
 });
 console.log(one.foo); // 'bar'
 // console.log(one.count) -> doesn't work as count is not exported
+
+3) Third party modules via NPM (Node Package Manager) registry
+Install via "npm install module_name" into node_modules folder
+Are require()'d with simple string identifiers, similar to built-in modules
+	var request = require('request')
+You can go down deep and pull out a single file from a module (e.g., require('azure/lib/services/blob/models/blobresult')) but his should be done with extreme care. You may introduce a coupling that the module author did not intend.
+
+Some modules provide command line utilities (e.g., express, mocha, azure-cli). You should install them globally since their scope is beyong one single application:
+"npm install -g module_name"

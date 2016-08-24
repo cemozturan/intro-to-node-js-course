@@ -30,6 +30,10 @@ var getResource = function(number) {
       }
     }, 10);
   });
+
+  // This returns immediately, whereas the emits above happens asyncly, with an interval.
+  // Those events get emitted by their subscribers later, when they are ready.
+  console.log("Returning EventEmitter");
   return(e);
 };
 

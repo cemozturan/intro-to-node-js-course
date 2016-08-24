@@ -140,3 +140,57 @@ You can go down deep and pull out a single file from a module (e.g., require('az
 
 Some modules provide command line utilities (e.g., express, mocha, azure-cli). You should install them globally since their scope is beyong one single application:
 "npm install -g module_name"
+
+
+
+---- EVENTS and STREAMS ----
+
+In addition to callbacks, Node provides another way to create async non-blocking code.
+
+Callback:
+
+getThem(param, function(error, items){
+	// check for error
+	// operate on array of items
+});
+
+Events:
+
+var results = getThem(param);
+
+results.on('item', function(i){
+	// do something with this one item
+});
+
+results.on('done', function(){
+	// no more items
+});
+
+results.on('error', function(err){
+	// react to error
+});
+
+Callbacks:
+1) One request, one reply.
+2) No results until all results (this also causes all items to be accumulated in memory)
+3) Either error or results
+
+Events:
+1) Publish/subscribe approach. "On" function can be invoked repeatedly to provide multiple functions to invoke on events (in effect, subscribing to events)
+2) Act on results as they arrive. Functions associated with 'item' event will be invoked for each item.
+3) Partial results before error
+
+Node's EventEmitter class:
+
+Subscriber:
+emitter.on(event, listener);
+
+Publisher:
+emitter.emit(event, [args]);
+
+The "event" can be any string.
+An event can be emitted with 0 or more arguments. [args] get passed to any functions that subscribe to those events.
+
+Two common patterns for using EventEmitters in Node:
+1) As a return value from a function call (like in the examples above)
+2) Objects extend EventEmitters and emit events themselves in addition to providing some other functionality

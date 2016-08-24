@@ -194,3 +194,15 @@ An event can be emitted with 0 or more arguments. [args] get passed to any funct
 Two common patterns for using EventEmitters in Node:
 1) As a return value from a function call (like in the examples above)
 2) Objects extend EventEmitters and emit events themselves in addition to providing some other functionality
+
+
+---- Readable and Writable Streams, the Pipe function ----
+
+Streams are instances of () and extensions to EventEmitter with an agreed upon interface.
+They are a unified abstraction to manage data flow, including:
+Network traffic (http requests and responses, tcp sockets), file I/O, stdin/stdout/stderr, and more...
+A stream is either a ReadableStream or a WritableStream, or both.
+A ReadableStream can be pipe()'d to a WritableStream.
+Node applies "backpressure" to cope with cases where a ReadableStream is consumed faster than the WritableStream it is being pipe()'d to.
+
+Streams come with a series of properties, functions and events, but their real power is in the pipe function.

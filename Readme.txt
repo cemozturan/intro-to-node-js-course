@@ -260,3 +260,22 @@ The return value is a ClientRequest, which is a writable stream that can be writ
 The ClientResponse object is provided via either callback (shown above) or as a "response" event on the request object. So if you don't pass in a parameter to the callback function, you can still get the response by using the event emitter.
 
 If all you want is a simple GET request, Node provides a simplified interface with http.get().
+
+-- Building a Web Server in Node --
+
+var http = require('http');
+
+var server = http.createServer(function(req, res) {
+	// process request
+});
+server.listen(port, [host]);
+
+The createServer function is passed a single parameter (the callback to be invoked each time a request is received by the web server).
+
+Each request is provided via either callback (as shown above) or as a "request" event on the server object, so if you don't have a callback function, you can still process requests by listening to the "request" event on the server object.
+
+Even if the server object is created, it will not begin accepting HTTP requests until the "listen" function is called.
+
+Callback paramaters: "req" above is an instance of a http.ServerRequest (a readable stream) and "res" above is an instance of a http.ServerResponse (a writable stream)
+
+Support for SSL is provided by a similar but separate module called "https", so you can call https.createServer().

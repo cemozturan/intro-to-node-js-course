@@ -235,3 +235,6 @@ Buffers can be converted to/from strings by providing an encoding (ascii, utf8 (
 Return value from file read operations is a buffer object, so we need to toString() them to get the actual value (see the fs examples in 4-local-system).
 
 4) "os" module
+
+Provides function to get info about the operating system your Node app is running on (tmpDir(), hostname(), type(), platform(), totalmem(), freemem(), cpus(), uptime(), etc...)
+os.EOL gives the appropriate end of line marker for the operating system.

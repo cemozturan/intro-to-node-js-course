@@ -206,3 +206,30 @@ A ReadableStream can be pipe()'d to a WritableStream.
 Node applies "backpressure" to cope with cases where a ReadableStream is consumed faster than the WritableStream it is being pipe()'d to.
 
 Streams come with a series of properties, functions and events, but their real power is in the pipe function.
+
+---- ACCESSING THE LOCAL SYSTEM ----
+
+1) Node's "process" object
+
+The "process" object allows you to manage your Node application's own process or other processes. It provides a collection of streams (stdin, stdout, stderr), attributes of the current process (process.env, process.argv, process.pid, process.title, process.optime(), process.memoryUsage(), process.cwd (current working directory), etc...), process-related actions (.abort(), .kill(), .chdir(), etc... (Note that most of these actions can be applied to the current process. "kill", however, takes in a process id and can be used to kill other processes on the system)).
+The "process" object is an instance of EventEmitter. It emits an "exit" event when the process is about to exit. Also, emit some POSIX event such as SIGINT, etc...
+
+2) Interacting with the file system
+
+In Node, interacting with the file system is done via the built-in "fs" module. Most function are wrappers around POSIX functions and have both async and sync versions.
+"fs" also provides some stream oriented functions:
+
+fs.createReadStream() - used to open and read a file, returns an fs.ReadStream
+fs.createWriteStream() - used to open and write to a file, returns an fs.WriteStream
+
+We can also wathc a file or directory for changes:
+
+fs.watch() - returns an fs.FSWatcher (an EventEmitter)
+"change" event: emitted when a file changes, includes the type of change and the filename that changed
+"error" event: emitted when an error occurs
+
+3) Buffers
+
+
+
+4) "os" module

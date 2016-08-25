@@ -238,3 +238,25 @@ Return value from file read operations is a buffer object, so we need to toStrin
 
 Provides function to get info about the operating system your Node app is running on (tmpDir(), hostname(), type(), platform(), totalmem(), freemem(), cpus(), uptime(), etc...)
 os.EOL gives the appropriate end of line marker for the operating system.
+
+---- INTERACTING WITH THE WEB ----
+
+We can use the http module, which is included in Node, to make requests of other websites.
+
+var req = http.request(options, function(response){
+	// process callback
+});
+
+"req" here is an instance of a http.ClientRequest, which is a writable stream.
+"response" is an instance of a http.ClientResponse, which is a readable stream.
+This callback is an example of when Node doesn't follow its own conventions since the first parameter is not an error indicator.
+
+"options" can be one of the following:
+1) A URL string
+2) An object specifying values for host, port, method, path, headers, auth, etc...
+
+The return value is a ClientRequest, which is a writable stream that can be written/pipe()'d to for POST requests.
+
+The ClientResponse object is provided via either callback (shown above) or as a "response" event on the request object. So if you don't pass in a parameter to the callback function, you can still get the response by using the event emitter.
+
+If all you want is a simple GET request, Node provides a simplified interface with http.get().

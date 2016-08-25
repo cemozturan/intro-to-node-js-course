@@ -230,6 +230,8 @@ fs.watch() - returns an fs.FSWatcher (an EventEmitter)
 
 3) Buffers
 
-
+JS has difficulty dealing with binary data but networking and the file system require it. The Buffer class provides a raw memory allocation for dealing with binary data directly.
+Buffers can be converted to/from strings by providing an encoding (ascii, utf8 (default), utf16le, base64, binary, hex, etc...).
+Return value from file read operations is a buffer object, so we need to toString() them to get the actual value (see the fs examples in 4-local-system).
 
 4) "os" module

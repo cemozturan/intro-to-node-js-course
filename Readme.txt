@@ -279,3 +279,10 @@ Even if the server object is created, it will not begin accepting HTTP requests 
 Callback paramaters: "req" above is an instance of a http.ServerRequest (a readable stream) and "res" above is an instance of a http.ServerResponse (a writable stream)
 
 Support for SSL is provided by a similar but separate module called "https", so you can call https.createServer().
+
+-- Real-time Interaction with Socket.io --
+
+Socket.IO provides an sbstraction for various method used to maintain an active connection between a browser and a server. It'll use web sockets when they are supported, and transparently fall back to several other techniques when sockets are not available (e.g., due to firewalls or browser limitations).
+In the case of Node.js, Socket.IO provides an interface for performing these socket-based communications on both the server and the browser.
+
+In Node, we 'll simply use the socket.io module (require('socket.io')).

@@ -15,5 +15,14 @@ var evenDoubler = function(number, callback){
   }
 }
 
+var evenDoublerSync = function(number) {
+  if (number % 2) {
+    throw(new Error("Odd input!"));
+  } else {
+    return number * 2;
+  }
+}
+
 module.exports.evenDoubler = evenDoubler;
+module.exports.evenDoublerSync = evenDoublerSync;
 module.exports.foo = "bar";

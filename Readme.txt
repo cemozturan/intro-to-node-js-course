@@ -286,3 +286,16 @@ Socket.IO provides an sbstraction for various method used to maintain an active 
 In the case of Node.js, Socket.IO provides an interface for performing these socket-based communications on both the server and the browser.
 
 In Node, we 'll simply use the socket.io module (require('socket.io')).
+
+---- TESTING AND DEBUGGING ----
+
+- Basic testing with the "assert" module
+- More advanced stuff with Mocha and script.js
+
+The "assert" module comes with Node, but must be required by the app. It can:
+1) test for (in)equality between expected and actual values
+2) test whether a block of code throws (or does not throw) an exception
+3) test for truthiness of a value
+4) test whether the "error" was passed to a callback
+
+Each assertion can contain a message to output on failure.

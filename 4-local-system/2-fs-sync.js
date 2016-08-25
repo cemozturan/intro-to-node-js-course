@@ -14,5 +14,7 @@ if (fs.existsSync('temp')) {
   fs.writeFileSync('test.txt', 'This is some test text for the file');
   fs.renameSync('test.txt', 'new.txt');
   console.log('File has size: ' + fs.statSync('new.txt').size + ' bytes');
+
+  // We need to call string because the data we have is a buffer, and needs to be converted to a string by using the default encoding.
   console.log('File contents: ' + fs.readFileSync('new.txt').toString());
 }

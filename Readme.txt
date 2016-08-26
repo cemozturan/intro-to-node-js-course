@@ -299,3 +299,27 @@ The "assert" module comes with Node, but must be required by the app. It can:
 4) test whether the "error" was passed to a callback
 
 Each assertion can contain a message to output on failure.
+
+-- Testing with Mocha and should.js --
+
+A Node app of any complexity will quickly outgrow the built-in "assert" module's capabilities, so there are a lot of testing frameworks out there and one of the most popular ones is Mocha.
+
+It is common to see Mocha paired with should.js, which provides a rich assertion syntax.
+
+Mocha:
+
+1) Runs tests serially (both async and sync tests)
+2) Test cases are organised into test suites
+3) Includes before(), after(), beforeEach(), afterEach()
+4) Supports pending (a test that has been stubbed out but not yet implemented), exclusive, inclusive tests
+5) Captures test duration, flagging tests that are slow
+6) Can watch a directory and re-run the tests each time a file changes
+7) Supports multiple interfaces (TDD, BDD, etc...) and output rendering
+
+should.js:
+
+Extends Node's "assert" module with BDD style assertions:
+should.exist(user);
+user.should.have.property('name', 'cem');
+user.should.have.property('items').with.lengthOf(4);
+user.hebele.should.equal(foo); // can assert properties of objects directly

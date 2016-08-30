@@ -14,7 +14,7 @@ var handler = function(req, res) {
   });
 };
 
-// This example ahs a web server and a socket.IO server combined.
+// This example has a web server and a socket.IO server combined.
 var app = http.createServer(handler);
 
 // So, socket.io adds itself to the web server we create above

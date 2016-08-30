@@ -3,6 +3,8 @@
 Run the tests using mocha 2-mocha.js
 mocha --help -> Gives a list of additional commands
 
+Experiment with different reporters
+mocha -R landing 2-mocha.js
 */
 
 var should = require('should');

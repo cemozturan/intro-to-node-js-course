@@ -1,7 +1,7 @@
 /*
 
 "request" makes very good use of streams. By passing it a URL, we make it return a stream.
-Since streams inherit from EventEmitters, we can use the "on" function to subscrive to some events
+Since streams inherit from EventEmitters, we can use the "on" function to subscribe to some events
 that get emitted by the ReadableStream, like "data" and "end". These are pre-defined events within ReadableStream.
 
 */

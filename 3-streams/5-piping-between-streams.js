@@ -22,7 +22,7 @@ request('http://www.pluralsight.com').pipe(process.stdout);
 // require file sysytem, so we can write a stream's content into a file
 var fs = require('fs');
 
-// require zlib, so we can write a strem's content into a compressed file
+// require zlib, so we can write a stream's content into a compressed file
 var zlib = require('zlib');
 
 // createGzip returns a stream that is both readable and writable

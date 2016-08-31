@@ -323,3 +323,26 @@ should.exist(user);
 user.should.have.property('name', 'cem');
 user.should.have.property('items').with.lengthOf(4);
 user.hebele.should.equal(foo); // can assert properties of objects directly
+
+---- SCALING YOUR NODE APPLICATION ----
+
+One criticism against Node app is they don't handle CPU intensive tests well. If a single task is using up a lot of CPU time, this will block the event loop and prevent other things from being done.
+
+One solution is to use child processes. A CUP intensive task can be deferred to a child process while the main Node app can continue to process events.
+
+There are 4 ways to launch a child process (all are in "child_process" module):
+
+1) spawn(command, [args], [options])
+	Launches a new process and executes the command (the first parameter) with "args"
+	Returns a ChildProcess, which is an EventEmitter that emits "exit" and "close" events that can be listened to by the main Node app.
+
+2) exec(command, [options], callback)
+	Runs "command" string in a shell
+	Callback is invoked on process completion with error, stderr, stdout
+
+3) execfile(file, [args], [options], callback)
+	Similar to exec, except "file" is executed directly rather than in a subshell
+
+4) fork(modulePath, [args], [options])
+	A special version of "spawn" expecially for creating Node processes
+	Adds a "send" function and "message" event to ChildProcess, to facilitate communication between parent and child processes
